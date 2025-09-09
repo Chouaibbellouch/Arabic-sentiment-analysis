@@ -15,7 +15,7 @@ cd Arabic-sentiment-analysis
 pip install -r requirements.txt
 ```
 
-## �� Dataset
+## Dataset
 
 Le projet utilise le dataset `arbml/Arabic_Sentiment_Twitter_Corpus` de Hugging Face, contenant des tweets arabes avec des labels de sentiment (positif/négatif).
 
@@ -71,4 +71,5 @@ Les hyperparamètres peuvent être modifiés dans `config.py` :
 - `BATCH_SIZE` : Taille des batches (défaut: 512)
 - `NUM_EPOCHS` : Nombre d'époques (défaut: 10)
 - `LR` : Learning rate (automatique selon le modèle)
+
 
