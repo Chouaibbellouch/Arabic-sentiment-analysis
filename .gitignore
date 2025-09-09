@@ -1,5 +1,9 @@
 #models
 *.pt
+checkpoints/
+
+#python cache
+__pycache__/
 
 #notebook checkpoints
 *.ipynb_checkpoints/
