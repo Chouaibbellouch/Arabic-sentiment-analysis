@@ -1,7 +1,6 @@
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from tqdm import tqdm
 
 from config import Config
 from dataset import Dataset

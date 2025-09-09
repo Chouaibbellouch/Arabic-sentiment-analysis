@@ -1,6 +1,5 @@
 import datasets
 import nltk
-from collections import Counter
 from datasets import Features, Value, ClassLabel, Sequence
 
 class Dataset:
