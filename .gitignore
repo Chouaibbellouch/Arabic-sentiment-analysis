@@ -1,5 +1,4 @@
 #models
-*.pt
 checkpoints/
 
 #python cache

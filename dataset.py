@@ -20,18 +20,18 @@ class Dataset:
         self.target_features = Features({
             "tweet": Value("string"),
             "label": ClassLabel(names=["neg", "pos"]),
-            "tokens": Sequence(Value("string"))
+            "tokens": Sequence(Value("string")),
+            "length": Value("int32"),
         })
         
         self._prepare_dataset()
     
     def tokenize(self, example, tokenizer, max_length):
-        """Fonction de tokenisation pour map"""
         tokens = tokenizer(example["tweet"])[:max_length]
-        return {"tokens": tokens}
+        length = len(tokens)
+        return {"tokens": tokens, "length": length}
     
     def _prepare_dataset(self):
-        """Prépare le dataset avec tokenisation et features"""
         max_length = 256
         
         self.ds['train'] = self.ds['train'].map(
@@ -63,9 +63,9 @@ class Dataset:
         self.ds['validation'] = self.ds['validation'].map(self.numericalize_example)
         self.ds['test'] = self.ds['test'].map(self.numericalize_example)
         
-        self.ds['train'] = self.ds['train'].with_format(type="torch", columns=["ids", "label"])
-        self.ds['validation'] = self.ds['validation'].with_format(type="torch", columns=["ids", "label"])
-        self.ds['test'] = self.ds['test'].with_format(type="torch", columns=["ids", "label"])
+        self.ds['train'] = self.ds['train'].with_format(type="torch", columns=["ids", "label", "length"])
+        self.ds['validation'] = self.ds['validation'].with_format(type="torch", columns=["ids", "label", "length"])
+        self.ds['test'] = self.ds['test'].with_format(type="torch", columns=["ids", "label", "length"])
     
     def get_train(self):
         return self.ds["train"]
